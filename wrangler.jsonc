@@ -1,0 +1,14 @@
+{
+  // Static-assets-only Worker (no Worker script) — serves the pitch deck.
+  // https://developers.cloudflare.com/workers/static-assets/
+  "name": "pitch",
+  "compatibility_date": "2026-06-20",
+  "assets": {
+    "directory": "."
+  },
+  // Same-account zone (tanvirmahin.com) → CF auto-creates the DNS record and
+  // provisions a free cert for this hostname on deploy.
+  "routes": [
+    { "pattern": "pitch.fallbakit.tanvirmahin.com", "custom_domain": true }
+  ]
+}
