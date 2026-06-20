@@ -140,22 +140,31 @@
     <section class="slide" id="s5" aria-label="Why Now">
       <p class="kicker"><span class="num">04</span> Why Now</p>
       <h2 class="headline">Inference is going hybrid.</h2>
-      <div class="why-grid">
-        <div class="trend diagram">
-          <svg viewBox="0 0 420 240" role="img" aria-label="Three rising trend lines">
-            <line x1="40" y1="200" x2="400" y2="200" stroke="var(--outline)" stroke-width="1.5"/>
-            <line x1="40" y1="200" x2="40" y2="24" stroke="var(--outline)" stroke-width="1.5"/>
-            <path class="trend-line tl1" d="M40 188 C140 176 250 150 400 60" fill="none" stroke="var(--lime)" stroke-width="3"/>
-            <path class="trend-line tl2" d="M40 196 C150 190 260 168 400 96" fill="none" stroke="var(--cyan)" stroke-width="3"/>
-            <path class="trend-line tl3" d="M40 198 C160 196 280 184 400 132" fill="none" stroke="#e5e3cf" stroke-width="2.5" stroke-opacity=".6"/>
-          </svg>
+      <p class="lede">Three signals point the same way: AI is everywhere, local runtimes are exploding, and inference is a massive market.</p>
+      <div class="signals diagram">
+        <div class="signal reveal">
+          <div class="sig-top"><span>Developers adopting AI</span>
+            <svg class="spark" viewBox="0 0 48 20" aria-hidden="true"><polyline points="2,17 16,13 30,8 45,3" fill="none" stroke="var(--lime)" stroke-width="2"/><circle cx="45" cy="3" r="2.6" fill="var(--lime)"/></svg></div>
+          <b class="sig-num">84%</b>
+          <p class="sig-sub">use or plan to use AI tools — up from 76% a year earlier.</p>
+          <span class="sig-src">Stack Overflow 2025</span>
         </div>
-        <ul class="stats">
-          <li class="reveal"><b>84%</b><span>of developers use or plan to use AI tools — up from 76% a year earlier. <em>Stack Overflow 2025</em></span></li>
-          <li class="reveal"><b>+178%</b><span>YoY growth in LLM projects on GitHub; vLLM &amp; Ollama among the fastest-growing. <em>GitHub Octoverse 2025</em></span></li>
-          <li class="reveal"><b>$106B → $255B</b><span>AI inference market by 2030, ~19% CAGR. <em>MarketsandMarkets 2025</em></span></li>
-        </ul>
+        <div class="signal reveal">
+          <div class="sig-top"><span>Local runtimes surging</span>
+            <svg class="spark" viewBox="0 0 48 20" aria-hidden="true"><polyline points="2,18 16,14 30,7 45,2" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="45" cy="2" r="2.6" fill="var(--cyan)"/></svg></div>
+          <b class="sig-num">+178%</b>
+          <p class="sig-sub">YoY growth in LLM projects on GitHub; vLLM &amp; Ollama among the fastest-growing.</p>
+          <span class="sig-src">GitHub Octoverse 2025</span>
+        </div>
+        <div class="signal reveal">
+          <div class="sig-top"><span>Inference market</span>
+            <svg class="spark" viewBox="0 0 48 20" aria-hidden="true"><polyline points="2,17 16,12 30,9 45,3" fill="none" stroke="var(--outline-bright)" stroke-width="2"/><circle cx="45" cy="3" r="2.6" fill="var(--outline-bright)"/></svg></div>
+          <b class="sig-num">$106B→$255B</b>
+          <p class="sig-sub">market size by 2030, growing ~19% a year.</p>
+          <span class="sig-src">MarketsandMarkets 2025</span>
+        </div>
       </div>
+      <p class="footnote reveal">Adoption is mainstream and local AI is exploding — every team's workload is splitting between local and cloud. <span class="accent">That split needs a control plane.</span></p>
     </section>
 
     <!-- 6 · TARGET MARKET -->
