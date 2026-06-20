@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Fallbakit — Local-first AI routing with cloud fallback</title>
+  <meta name="description" content="Fallbakit gives developers one OpenAI-compatible endpoint that routes to local Ollama, oMLX, or vLLM first and recovers to cloud providers when local inference cannot serve." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Fallbakit — Local-first AI routing with cloud fallback" />
+  <meta property="og:description" content="One OpenAI-compatible endpoint. Local by default, cloud when it matters." />
+  <meta property="og:url" content="https://pitch.fallbakit.tanvirmahin.com" />
+  <meta property="og:image" content="assets/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Ambient background: perspective grid + lime grid + aurora + scanline -->
+  <div class="deck-bg" aria-hidden="true">
+    <div class="grid-far"></div>
+    <div class="grid-near"></div>
+    <div class="aurora aurora-lime"></div>
+    <div class="aurora aurora-cyan"></div>
+    <div class="scanline"></div>
+  </div>
+
+  <!-- Top bar: brand + progress -->
+  <header class="deck-top">
+    <a class="brand" href="#1" aria-label="Fallbakit">
+      <img class="brand-mark" src="assets/logo.svg" alt="" width="30" height="30" />
+      <span class="brand-word">Fallba<span class="accent">kit</span></span>
+    </a>
+    <div class="deck-progress" aria-hidden="true"><span id="progressBar"></span></div>
+  </header>
+
+  <main id="deck">
+
+    <!-- 1 · COVER -->
+    <section class="slide slide-cover" id="s1" aria-label="Cover">
+      <div class="cover-grid">
+        <div class="cover-copy">
+          <img class="cover-mark" src="assets/logo.svg" alt="Fallbakit logo" width="84" height="84" />
+          <h1 class="cover-title">Fallba<span class="accent">kit</span></h1>
+          <p class="cover-tag">Local-first AI routing <span class="dim">with</span> cloud fallback.</p>
+          <p class="cover-sub">One OpenAI-compatible endpoint. Local by default, cloud when it matters.</p>
+        </div>
+        <div class="cover-diagram diagram">
+          <svg viewBox="0 0 460 320" role="img" aria-label="A request routing from local to cloud">
+            <defs>
+              <linearGradient id="routeGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="var(--lime)" />
+                <stop offset="1" stop-color="var(--cyan)" />
+              </linearGradient>
+              <filter id="glowSoft" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="4" result="b" /><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <path id="coverRoute" d="M40 160 H170 C250 160 250 80 360 80" fill="none" stroke="url(#routeGrad)" stroke-width="3" stroke-linecap="round" class="route-draw" />
+            <path d="M170 160 C250 160 250 240 360 240" fill="none" stroke="var(--cyan)" stroke-width="3" stroke-linecap="round" stroke-opacity=".45" stroke-dasharray="2 9" />
+            <g class="node" filter="url(#glowSoft)"><circle cx="40" cy="160" r="12" fill="var(--lime)"/><circle cx="40" cy="160" r="5" fill="#1a1c08"/></g>
+            <g class="node"><circle cx="360" cy="80" r="14" fill="var(--lime)"/><circle cx="360" cy="80" r="6" fill="#1a1c08"/></g>
+            <g class="node"><circle cx="360" cy="240" r="11" fill="var(--cyan)"/><circle cx="360" cy="240" r="5" fill="#06222a"/></g>
+            <text x="40"  y="195" class="d-label" text-anchor="middle">app</text>
+            <text x="360" y="58"  class="d-label accent-fill" text-anchor="middle">local</text>
+            <text x="360" y="270" class="d-label cyan-fill" text-anchor="middle">cloud</text>
+            <circle r="5" fill="#fff" filter="url(#glowSoft)"><animateMotion dur="2.6s" repeatCount="indefinite" rotate="auto"><mpath href="#coverRoute"/></animateMotion></circle>
+          </svg>
+        </div>
+      </div>
+      <p class="cover-hint">Use <kbd>→</kbd> <kbd>←</kbd> or click to navigate</p>
+    </section>
+
+    <!-- 2 · PROBLEM -->
+    <section class="slide" id="s2" aria-label="The Problem">
+      <p class="kicker"><span class="num">01</span> The Problem</p>
+      <h2 class="headline">Teams are forced to choose.</h2>
+      <p class="lede">Cloud reliability or local control — pick one, and live with the cost.</p>
+      <div class="vs-grid diagram">
+        <div class="vs-card reveal">
+          <div class="vs-head"><span class="dot cyan"></span> Cloud AI</div>
+          <ul><li class="good">Reliable, easy to integrate</li><li class="bad">Expensive at scale</li><li class="bad">Data leaves your control</li></ul>
+        </div>
+        <div class="vs-or reveal">vs</div>
+        <div class="vs-card reveal">
+          <div class="vs-head"><span class="dot lime"></span> Local AI</div>
+          <ul><li class="good">Private, cheap, fast</li><li class="good">Full control</li><li class="bad">Fragile in production</li></ul>
+        </div>
+      </div>
+      <p class="footnote reveal">Most teams pick one forever — or hand-build routing, health checks, and fallback themselves.</p>
+    </section>
+
+    <!-- 3 · SOLUTION -->
+    <section class="slide" id="s3" aria-label="The Solution">
+      <p class="kicker"><span class="num">02</span> The Solution</p>
+      <h2 class="headline">Local first. Cloud when it can't serve.</h2>
+      <p class="lede">One OpenAI-compatible API. Fallbakit checks local health and routes — your app never changes.</p>
+      <div class="flow diagram">
+        <svg viewBox="0 0 720 300" role="img" aria-label="App calls Fallbakit, which routes to a local runner by default and falls back to cloud">
+          <defs>
+            <filter id="glow3" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <!-- wires -->
+          <path id="wireApp" d="M120 150 H300" fill="none" stroke="var(--outline-bright)" stroke-width="2.5"/>
+          <path id="wireLocal" d="M420 150 C500 150 500 86 600 86" fill="none" stroke="var(--lime)" stroke-width="3" class="route-draw"/>
+          <path id="wireCloud" d="M420 150 C500 150 500 214 600 214" fill="none" stroke="var(--cyan)" stroke-width="3" stroke-opacity=".5" stroke-dasharray="3 8"/>
+          <!-- app -->
+          <g class="box"><rect x="40" y="120" width="86" height="60" rx="6"/><text x="83" y="155" class="b-title">App</text><text x="83" y="171" class="b-sub">OpenAI SDK</text></g>
+          <!-- fallbakit -->
+          <g class="box box-key" filter="url(#glow3)"><rect x="300" y="112" width="124" height="76" rx="8"/><text x="362" y="146" class="b-title accent-fill">Fallbakit</text><text x="362" y="166" class="b-sub">route · health · fallback</text></g>
+          <!-- local -->
+          <g class="box"><rect x="600" y="58" width="96" height="56" rx="6"/><text x="648" y="82" class="b-title">Local runner</text><text x="648" y="100" class="b-sub accent-fill">default ✓</text></g>
+          <!-- cloud -->
+          <g class="box"><rect x="600" y="186" width="96" height="56" rx="6"/><text x="648" y="210" class="b-title">Cloud provider</text><text x="648" y="228" class="b-sub cyan-fill">fallback</text></g>
+          <!-- packets -->
+          <circle r="4.5" fill="#fff" filter="url(#glow3)"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#wireApp"/></animateMotion></circle>
+          <circle r="4.5" fill="var(--lime)" filter="url(#glow3)"><animateMotion dur="2.4s" begin="0.9s" repeatCount="indefinite"><mpath href="#wireLocal"/></animateMotion></circle>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 4 · PRODUCT CORE -->
+    <section class="slide" id="s4" aria-label="Product Core">
+      <p class="kicker"><span class="num">03</span> Product</p>
+      <h2 class="headline">Local AI, made production-ready.</h2>
+      <div class="tiles diagram">
+        <div class="tile reveal"><div class="tile-ico">⟁</div><h3>OpenAI-compatible</h3><p>Swap one base URL. Existing SDKs just work.</p></div>
+        <div class="tile reveal"><div class="tile-ico">⇄</div><h3>Secure runner tunnel</h3><p>Outbound connection — no public ports exposed.</p></div>
+        <div class="tile reveal"><div class="tile-ico">↻</div><h3>Automatic fallback</h3><p>Recovers to cloud when local can't serve.</p></div>
+        <div class="tile reveal"><div class="tile-ico">◴</div><h3>Route & usage visibility</h3><p>Every decision, cost, and saving in one dashboard.</p></div>
+      </div>
+    </section>
+
+    <!-- 5 · WHY NOW -->
+    <section class="slide" id="s5" aria-label="Why Now">
+      <p class="kicker"><span class="num">04</span> Why Now</p>
+      <h2 class="headline">Inference is going hybrid.</h2>
+      <div class="why-grid">
+        <div class="trend diagram">
+          <svg viewBox="0 0 420 240" role="img" aria-label="Three rising trend lines">
+            <line x1="40" y1="200" x2="400" y2="200" stroke="var(--outline)" stroke-width="1.5"/>
+            <line x1="40" y1="200" x2="40" y2="24" stroke="var(--outline)" stroke-width="1.5"/>
+            <path class="trend-line tl1" d="M40 188 C140 176 250 150 400 60" fill="none" stroke="var(--lime)" stroke-width="3"/>
+            <path class="trend-line tl2" d="M40 196 C150 190 260 168 400 96" fill="none" stroke="var(--cyan)" stroke-width="3"/>
+            <path class="trend-line tl3" d="M40 198 C160 196 280 184 400 132" fill="none" stroke="#e5e3cf" stroke-width="2.5" stroke-opacity=".6"/>
+          </svg>
+        </div>
+        <ul class="stats">
+          <li class="reveal"><b>84%</b><span>of developers use or plan to use AI tools. <em>Stack Overflow 2025</em></span></li>
+          <li class="reveal"><b>70k+</b><span>new GenAI projects in 2024; Ollama fastest-growing. <em>GitHub Octoverse</em></span></li>
+          <li class="reveal"><b>$101B → $532B</b><span>AI inference revenue by 2030. <em>S&amp;P Global</em></span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6 · TARGET MARKET -->
+    <section class="slide" id="s6" aria-label="Target Market">
+      <p class="kicker"><span class="num">05</span> Market</p>
+      <h2 class="headline">Start with developers. Expand to enterprise.</h2>
+      <p class="lede">A sharp wedge — teams already paying for cloud inference or experimenting with local models.</p>
+      <div class="wedge diagram">
+        <svg viewBox="0 0 720 220" role="img" aria-label="A market wedge widening from developers to enterprise">
+          <polygon class="wedge-shape" points="20,130 700,30 700,190" fill="url(#wedgeGrad)" fill-opacity=".14" stroke="var(--lime)" stroke-opacity=".5" stroke-width="1.5"/>
+          <defs><linearGradient id="wedgeGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="var(--lime)"/><stop offset="1" stop-color="var(--cyan)"/></linearGradient></defs>
+          <g class="wedge-stop reveal"><circle cx="120" cy="118" r="6" fill="var(--lime)"/><text x="120" y="150" class="d-label" text-anchor="middle">Indie devs &amp; AI startups</text></g>
+          <g class="wedge-stop reveal"><circle cx="320" cy="98" r="6" fill="var(--lime)"/><text x="320" y="78" class="d-label" text-anchor="middle">SaaS teams · high-volume AI</text></g>
+          <g class="wedge-stop reveal"><circle cx="520" cy="74" r="6" fill="var(--cyan)"/><text x="520" y="150" class="d-label" text-anchor="middle">Dev-tool companies</text></g>
+          <g class="wedge-stop reveal"><circle cx="664" cy="58" r="7" fill="var(--cyan)"/><text x="664" y="38" class="d-label cyan-fill" text-anchor="middle">Enterprise</text></g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 7 · UNIQUE -->
+    <section class="slide" id="s7" aria-label="What Makes It Unique">
+      <p class="kicker"><span class="num">06</span> Differentiation</p>
+      <h2 class="headline">Not a proxy. A reliability layer.</h2>
+      <div class="matrix diagram">
+        <div class="m-row m-head reveal"><span></span><span class="accent-fill">Fallbakit</span><span class="dim">Typical AI proxy</span></div>
+        <div class="m-row reveal"><span>Default route</span><span class="accent-fill">Local-first</span><span class="dim">Cloud-first</span></div>
+        <div class="m-row reveal"><span>Reliability</span><span class="accent-fill">Built-in fallback + health</span><span class="dim">Proxy only</span></div>
+        <div class="m-row reveal"><span>Economics</span><span class="accent-fill">BYOK — no token resale</span><span class="dim">Resells tokens</span></div>
+        <div class="m-row reveal"><span>Visibility</span><span class="accent-fill">Routes · cost · runner health</span><span class="dim">Limited</span></div>
+        <div class="m-row reveal"><span>App changes</span><span class="accent-fill">One base URL</span><span class="dim">Varies</span></div>
+      </div>
+    </section>
+
+    <!-- 8 · BUSINESS MODEL -->
+    <section class="slide" id="s8" aria-label="Business Model">
+      <p class="kicker"><span class="num">07</span> Business Model</p>
+      <h2 class="headline">A subscription control plane.</h2>
+      <p class="lede">BYOK means we charge for routing, reliability, and visibility — never for reselling tokens.</p>
+      <div class="ladder diagram">
+        <div class="step"><span class="step-k">Free</span><span class="step-v">Dev &amp; small experiments</span></div>
+        <div class="step"><span class="step-k">Basic</span><span class="step-v">One active local runner</span></div>
+        <div class="step"><span class="step-k">Enterprise</span><span class="step-v">Multiple runners · team controls</span></div>
+        <div class="step"><span class="step-k">Add-ons</span><span class="step-v">SSO · audit · private deploy</span></div>
+      </div>
+    </section>
+
+    <!-- 9 · FEASIBILITY -->
+    <section class="slide" id="s9" aria-label="Feasibility">
+      <p class="kicker"><span class="num">08</span> Feasibility</p>
+      <h2 class="headline">Builds on what developers already use.</h2>
+      <p class="lede">Low switching cost — no new mental model, no rewrite, no firewall surgery.</p>
+      <div class="blocks diagram">
+        <div class="block reveal"><b>OpenAI-compatible</b><span>Familiar API pattern</span></div>
+        <div class="block-plus reveal">+</div>
+        <div class="block reveal"><b>Ollama · oMLX · vLLM</b><span>Existing local runtimes</span></div>
+        <div class="block-plus reveal">+</div>
+        <div class="block reveal"><b>BYOK providers</b><span>Their own accounts</span></div>
+        <div class="block-plus reveal">+</div>
+        <div class="block reveal"><b>Outbound agent</b><span>No port-forwarding</span></div>
+      </div>
+    </section>
+
+    <!-- 10 · ROADMAP -->
+    <section class="slide" id="s10" aria-label="Roadmap">
+      <p class="kicker"><span class="num">09</span> Roadmap</p>
+      <h2 class="headline">Router → control plane → fleet.</h2>
+      <div class="timeline diagram">
+        <div class="phase reveal"><span class="phase-tag accent-fill">Now</span><h3>Reliable router</h3><ul><li>Local-first routing</li><li>Automatic fallback</li><li>Usage &amp; cost visibility</li></ul></div>
+        <div class="phase reveal"><span class="phase-tag">Next</span><h3>Team control plane</h3><ul><li>Smarter model routing</li><li>Roles · audit · SSO</li><li>Alerts &amp; spend limits</li></ul></div>
+        <div class="phase reveal"><span class="phase-tag cyan-fill">Later</span><h3>Hybrid fleet</h3><ul><li>Multi-region routing</li><li>Runner fleet management</li><li>Customer-hosted plane</li></ul></div>
+      </div>
+    </section>
+
+    <!-- 11 · VISION -->
+    <section class="slide" id="s11" aria-label="Vision">
+      <p class="kicker"><span class="num">10</span> Vision</p>
+      <h2 class="headline">Every request runs in its best place.</h2>
+      <div class="vision diagram">
+        <svg viewBox="0 0 720 280" role="img" aria-label="Fallbakit routing to local, edge, private cloud, and public provider">
+          <defs><filter id="glowV" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <g class="box box-key" filter="url(#glowV)"><rect x="300" y="116" width="120" height="56" rx="8"/><text x="360" y="149" class="b-title accent-fill">Fallbakit</text></g>
+          <path id="vL1" d="M300 138 C220 120 150 96 90 70" fill="none" stroke="var(--lime)" stroke-width="2.5" class="route-draw"/>
+          <path id="vL2" d="M300 150 C220 160 150 188 90 210" fill="none" stroke="var(--lime)" stroke-width="2.5" class="route-draw"/>
+          <path id="vL3" d="M420 138 C500 120 570 96 630 70" fill="none" stroke="var(--cyan)" stroke-width="2.5" class="route-draw"/>
+          <path id="vL4" d="M420 150 C500 160 570 188 630 210" fill="none" stroke="var(--cyan)" stroke-width="2.5" class="route-draw"/>
+          <g class="dest"><circle cx="78" cy="64" r="9" fill="var(--lime)"/><text x="78" y="46" class="d-label" text-anchor="middle">Local</text></g>
+          <g class="dest"><circle cx="78" cy="216" r="9" fill="var(--lime)"/><text x="78" y="244" class="d-label" text-anchor="middle">Edge</text></g>
+          <g class="dest"><circle cx="642" cy="64" r="9" fill="var(--cyan)"/><text x="642" y="46" class="d-label" text-anchor="middle">Private cloud</text></g>
+          <g class="dest"><circle cx="642" cy="216" r="9" fill="var(--cyan)"/><text x="642" y="244" class="d-label" text-anchor="middle">Public provider</text></g>
+        </svg>
+      </div>
+      <p class="footnote reveal">Lower cost · more control · better reliability · full operational visibility.</p>
+    </section>
+
+    <!-- 12 · ASK -->
+    <section class="slide slide-ask" id="s12" aria-label="The Ask">
+      <img class="ask-mark" src="assets/logo.svg" alt="Fallbakit logo" width="72" height="72" />
+      <p class="kicker"><span class="num">11</span> The Ask</p>
+      <h2 class="headline">Help make local-first AI the default.</h2>
+      <div class="asks diagram">
+        <div class="ask-item reveal"><span class="ask-n">01</span> Grow developer adoption</div>
+        <div class="ask-item reveal"><span class="ask-n">02</span> Harden enterprise controls</div>
+        <div class="ask-item reveal"><span class="ask-n">03</span> Expand the runner ecosystem</div>
+        <div class="ask-item reveal"><span class="ask-n">04</span> Scale hybrid inference routing</div>
+      </div>
+      <p class="ask-foot reveal">Run AI locally first — never lose reliability. <a href="https://fallbakit.com">fallbakit.com</a></p>
+    </section>
+
+  </main>
+
+  <!-- Click zones for prev/next -->
+  <button class="edge edge-prev" id="prevBtn" aria-label="Previous slide"></button>
+  <button class="edge edge-next" id="nextBtn" aria-label="Next slide"></button>
+
+  <!-- Dots + counter -->
+  <nav class="deck-dots" id="dots" aria-label="Slide navigation"></nav>
+  <div class="deck-counter"><span id="curNum">01</span> <span class="dim">/ 12</span></div>
+
+  <script src="deck.js"></script>
+</body>
+</html>
