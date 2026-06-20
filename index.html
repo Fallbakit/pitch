@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Fallbakit — Local-first AI routing with cloud fallback</title>
-  <meta name="description" content="Fallbakit gives developers one OpenAI-compatible endpoint that routes to local Ollama, oMLX, or vLLM first and recovers to cloud providers when local inference cannot serve." />
+  <title>Fallbakit — Cut the cost of AI inference</title>
+  <meta name="description" content="Fallbakit runs AI on hardware you already own — local-first routing with automatic cloud fallback, plus a self-hosted licensed edition for security-focused infrastructure. One OpenAI-compatible endpoint." />
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Fallbakit — Local-first AI routing with cloud fallback" />
-  <meta property="og:description" content="One OpenAI-compatible endpoint. Local by default, cloud when it matters." />
+  <meta property="og:title" content="Fallbakit — Cut the cost of AI inference" />
+  <meta property="og:description" content="Run AI on hardware you already own. Local-first, with cloud fallback. One OpenAI-compatible endpoint." />
   <meta property="og:url" content="https://pitch.fallbakit.tanvirmahin.com" />
   <meta property="og:image" content="assets/og.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -21,7 +21,6 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Ambient background: perspective grid + lime grid + aurora + scanline -->
   <div class="deck-bg" aria-hidden="true">
     <div class="grid-far"></div>
     <div class="grid-near"></div>
@@ -30,7 +29,6 @@
     <div class="scanline"></div>
   </div>
 
-  <!-- Top bar: brand + progress -->
   <header class="deck-top">
     <a class="brand" href="#1" aria-label="Fallbakit">
       <img class="brand-mark" src="assets/logo.svg" alt="" width="30" height="30" />
@@ -47,11 +45,11 @@
         <div class="cover-copy">
           <img class="cover-mark" src="assets/logo.svg" alt="Fallbakit logo" width="84" height="84" />
           <h1 class="cover-title">Fallba<span class="accent">kit</span></h1>
-          <p class="cover-tag">Local-first AI routing <span class="dim">with</span> cloud fallback.</p>
-          <p class="cover-sub">One OpenAI-compatible endpoint. Local by default, cloud when it matters.</p>
+          <p class="cover-tag">Cut the cost of AI inference.</p>
+          <p class="cover-sub">Run models on hardware you already own — local-first, with automatic cloud fallback. One OpenAI-compatible endpoint.</p>
         </div>
         <div class="cover-diagram diagram">
-          <svg viewBox="0 0 460 320" role="img" aria-label="A request routing from local to cloud">
+          <svg viewBox="0 0 460 320" role="img" aria-label="A request routing from your hardware to cloud fallback">
             <defs>
               <linearGradient id="routeGrad" x1="0" y1="0" x2="1" y2="0">
                 <stop offset="0" stop-color="var(--lime)" />
@@ -67,7 +65,7 @@
             <g class="node"><circle cx="360" cy="80" r="14" fill="var(--lime)"/><circle cx="360" cy="80" r="6" fill="#1a1c08"/></g>
             <g class="node"><circle cx="360" cy="240" r="11" fill="var(--cyan)"/><circle cx="360" cy="240" r="5" fill="#06222a"/></g>
             <text x="40"  y="195" class="d-label" text-anchor="middle">app</text>
-            <text x="360" y="58"  class="d-label accent-fill" text-anchor="middle">local</text>
+            <text x="360" y="58"  class="d-label accent-fill" text-anchor="middle">your hardware</text>
             <text x="360" y="270" class="d-label cyan-fill" text-anchor="middle">cloud</text>
             <circle r="5" fill="#fff" filter="url(#glowSoft)"><animateMotion dur="2.6s" repeatCount="indefinite" rotate="auto"><mpath href="#coverRoute"/></animateMotion></circle>
           </svg>
@@ -79,72 +77,145 @@
     <!-- 2 · PROBLEM -->
     <section class="slide" id="s2" aria-label="The Problem">
       <p class="kicker"><span class="num">01</span> The Problem</p>
-      <h2 class="headline">Teams are forced to choose.</h2>
-      <p class="lede">Cloud reliability or local control — pick one, and live with the cost.</p>
+      <h2 class="headline">AI inference is a runaway cost.</h2>
+      <p class="lede">Cloud bills scale with every token — and send your data outside your walls. Local hardware is cheaper and private, but breaks in production.</p>
       <div class="vs-grid diagram">
         <div class="vs-card reveal">
-          <div class="vs-head"><span class="dot cyan"></span> Cloud AI</div>
-          <ul><li class="good">Reliable, easy to integrate</li><li class="bad">Expensive at scale</li><li class="bad">Data leaves your control</li></ul>
+          <div class="vs-head"><span class="dot cyan"></span> Cloud APIs</div>
+          <ul><li class="good">Reliable, easy to integrate</li><li class="bad">Cost scales with usage</li><li class="bad">Data leaves your network</li></ul>
         </div>
         <div class="vs-or reveal">vs</div>
         <div class="vs-card reveal">
-          <div class="vs-head"><span class="dot lime"></span> Local AI</div>
-          <ul><li class="good">Private, cheap, fast</li><li class="good">Full control</li><li class="bad">Fragile in production</li></ul>
+          <div class="vs-head"><span class="dot lime"></span> Your own hardware</div>
+          <ul><li class="good">Cheap, private, fast</li><li class="good">Full control of data</li><li class="bad">Fragile &amp; unmanaged in prod</li></ul>
         </div>
       </div>
-      <p class="footnote reveal">Most teams pick one forever — or hand-build routing, health checks, and fallback themselves.</p>
+      <p class="footnote reveal">Teams overpay for cloud — or hand-build routing, health checks, and fallback themselves.</p>
     </section>
 
     <!-- 3 · SOLUTION -->
     <section class="slide" id="s3" aria-label="The Solution">
       <p class="kicker"><span class="num">02</span> The Solution</p>
-      <h2 class="headline">Local first. Cloud when it can't serve.</h2>
-      <p class="lede">One OpenAI-compatible API. Fallbakit checks local health and routes — your app never changes.</p>
+      <h2 class="headline">Serve AI from hardware you own.</h2>
+      <p class="lede">One OpenAI-compatible endpoint. Fallbakit offloads production traffic to your local machines first, and falls back to cloud only when it must.</p>
       <div class="flow diagram">
-        <svg viewBox="0 0 720 300" role="img" aria-label="App calls Fallbakit, which routes to a local runner by default and falls back to cloud">
+        <svg viewBox="0 0 720 300" role="img" aria-label="App calls Fallbakit, which routes to your hardware by default and falls back to cloud">
           <defs>
             <filter id="glow3" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
           </defs>
-          <!-- wires -->
           <path id="wireApp" d="M120 150 H300" fill="none" stroke="var(--outline-bright)" stroke-width="2.5"/>
           <path id="wireLocal" d="M420 150 C500 150 500 86 600 86" fill="none" stroke="var(--lime)" stroke-width="3" class="route-draw"/>
           <path id="wireCloud" d="M420 150 C500 150 500 214 600 214" fill="none" stroke="var(--cyan)" stroke-width="3" stroke-opacity=".5" stroke-dasharray="3 8"/>
-          <!-- app -->
           <g class="box"><rect x="40" y="120" width="86" height="60" rx="6"/><text x="83" y="155" class="b-title">App</text><text x="83" y="171" class="b-sub">OpenAI SDK</text></g>
-          <!-- fallbakit -->
           <g class="box box-key" filter="url(#glow3)"><rect x="300" y="112" width="124" height="76" rx="8"/><text x="362" y="146" class="b-title accent-fill">Fallbakit</text><text x="362" y="166" class="b-sub">route · health · fallback</text></g>
-          <!-- local -->
-          <g class="box"><rect x="600" y="58" width="96" height="56" rx="6"/><text x="648" y="82" class="b-title">Local runner</text><text x="648" y="100" class="b-sub accent-fill">default ✓</text></g>
-          <!-- cloud -->
-          <g class="box"><rect x="600" y="186" width="96" height="56" rx="6"/><text x="648" y="210" class="b-title">Cloud provider</text><text x="648" y="228" class="b-sub cyan-fill">fallback</text></g>
-          <!-- packets -->
+          <g class="box"><rect x="600" y="58" width="100" height="56" rx="6"/><text x="650" y="82" class="b-title">Your hardware</text><text x="650" y="100" class="b-sub accent-fill">default ✓</text></g>
+          <g class="box"><rect x="600" y="186" width="100" height="56" rx="6"/><text x="650" y="210" class="b-title">Cloud provider</text><text x="650" y="228" class="b-sub cyan-fill">fallback</text></g>
           <circle r="4.5" fill="#fff" filter="url(#glow3)"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#wireApp"/></animateMotion></circle>
           <circle r="4.5" fill="var(--lime)" filter="url(#glow3)"><animateMotion dur="2.4s" begin="0.9s" repeatCount="indefinite"><mpath href="#wireLocal"/></animateMotion></circle>
         </svg>
       </div>
+      <p class="footnote reveal">Secure outbound tunnel — no public ports, no app rewrite. Swap one base URL.</p>
     </section>
 
-    <!-- 4 · PRODUCT CORE -->
-    <section class="slide" id="s4" aria-label="Product Core">
-      <p class="kicker"><span class="num">03</span> Product</p>
-      <h2 class="headline">Local AI, made production-ready.</h2>
+    <!-- 4 · CORE BENEFITS -->
+    <section class="slide" id="s4" aria-label="Core Benefits">
+      <p class="kicker"><span class="num">03</span> Core Benefits</p>
+      <h2 class="headline">Cheaper, private, and reliable.</h2>
       <div class="tiles diagram">
-        <div class="tile reveal"><div class="tile-ico">⟁</div><h3>OpenAI-compatible</h3><p>Swap one base URL. Existing SDKs just work.</p></div>
-        <div class="tile reveal"><div class="tile-ico">⇄</div><h3>Secure runner tunnel</h3><p>Outbound connection — no public ports exposed.</p></div>
-        <div class="tile reveal"><div class="tile-ico">↻</div><h3>Automatic fallback</h3><p>Recovers to cloud when local can't serve.</p></div>
-        <div class="tile reveal"><div class="tile-ico">◴</div><h3>Route & usage visibility</h3><p>Every decision, cost, and saving in one dashboard.</p></div>
+        <div class="tile reveal"><div class="tile-ico">$</div><h3>Lower cost</h3><p>Route the bulk of traffic to hardware you already pay for. Cloud only for overflow.</p></div>
+        <div class="tile reveal"><div class="tile-ico">⛨</div><h3>Security &amp; privacy</h3><p>Sensitive prompts stay on your infrastructure. Standalone never leaves your network.</p></div>
+        <div class="tile reveal"><div class="tile-ico">↻</div><h3>Reliability</h3><p>Automatic cloud fallback + health checks. Local is never a single point of failure.</p></div>
+        <div class="tile reveal"><div class="tile-ico">◴</div><h3>Control &amp; visibility</h3><p>Every route, cost, and saving in one dashboard. BYOK — no token reselling.</p></div>
       </div>
     </section>
 
-    <!-- 5 · WHY NOW -->
-    <section class="slide" id="s5" aria-label="Why Now">
-      <p class="kicker"><span class="num">04</span> Why Now</p>
+    <!-- 5 · COST THESIS -->
+    <section class="slide" id="s5" aria-label="The Thesis">
+      <p class="kicker"><span class="num">04</span> The Thesis</p>
+      <h2 class="headline">Every request kept local is margin.</h2>
+      <p class="lede">Most workloads don't need a frontier cloud model. Offload them to hardware you own — and stop renting compute you could supply.</p>
+      <div class="econ diagram">
+        <div class="bar-row reveal">
+          <span class="bar-label">Cloud-only</span>
+          <div class="bar"><i class="seg cloud" style="width:100%">cloud inference spend</i></div>
+        </div>
+        <div class="bar-row reveal">
+          <span class="bar-label">Local-first with Fallbakit</span>
+          <div class="bar"><i class="seg owned" style="width:75%">your hardware — already paid for</i><i class="seg cloud" style="width:25%">overflow</i></div>
+        </div>
+      </div>
+      <p class="footnote reveal"><span class="accent">Illustrative:</span> shifting ~75% of traffic to owned hardware cuts cloud inference spend by roughly the same share.</p>
+    </section>
+
+    <!-- 6 · TWO EDITIONS -->
+    <section class="slide" id="s6" aria-label="Two Editions">
+      <p class="kicker"><span class="num">05</span> Product</p>
+      <h2 class="headline">Two ways to deploy.</h2>
+      <div class="editions diagram">
+        <div class="edition reveal">
+          <span class="ed-tag">Cloud · subscription</span>
+          <h3>Fallbakit Cloud</h3>
+          <p class="ed-sub">Managed control plane.</p>
+          <ul><li>Local-first routing + cloud fallback</li><li>BYOK providers — no token resale</li><li>Usage, cost &amp; route dashboard</li></ul>
+        </div>
+        <div class="edition reveal ed-key">
+          <span class="ed-tag cyan-fill">Standalone · licensed</span>
+          <h3>Fallbakit Standalone</h3>
+          <p class="ed-sub">Self-hosted on your infrastructure.</p>
+          <ul><li>Runs fully on your hardware — air-gap capable</li><li>Data never leaves your network</li><li>Built for security-focused &amp; regulated orgs</li></ul>
+        </div>
+      </div>
+      <p class="footnote reveal">Same engine. Use the cloud control plane, or license it to run entirely inside your walls.</p>
+    </section>
+
+    <!-- 7 · TARGET AUDIENCE -->
+    <section class="slide" id="s7" aria-label="Target Audience">
+      <p class="kicker"><span class="num">06</span> Who It's For</p>
+      <h2 class="headline">Teams that own their stack.</h2>
+      <p class="lede">Start with cost-conscious developers; expand into security-driven enterprises running standalone.</p>
+      <div class="wedge diagram">
+        <svg viewBox="0 0 720 220" role="img" aria-label="A market wedge widening from developers to enterprise">
+          <polygon class="wedge-shape" points="20,130 700,30 700,190" fill="url(#wedgeGrad)" fill-opacity=".14" stroke="var(--lime)" stroke-opacity=".5" stroke-width="1.5"/>
+          <defs><linearGradient id="wedgeGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="var(--lime)"/><stop offset="1" stop-color="var(--cyan)"/></linearGradient></defs>
+          <g class="wedge-stop reveal"><circle cx="118" cy="118" r="6" fill="var(--lime)"/><text x="118" y="150" class="d-label" text-anchor="middle">AI startups cutting bills</text></g>
+          <g class="wedge-stop reveal"><circle cx="320" cy="98" r="6" fill="var(--lime)"/><text x="320" y="78" class="d-label" text-anchor="middle">SaaS — AI is a margin line</text></g>
+          <g class="wedge-stop reveal"><circle cx="510" cy="76" r="6" fill="var(--cyan)"/><text x="510" y="150" class="d-label" text-anchor="middle">Dev-tools &amp; agencies</text></g>
+          <g class="wedge-stop reveal"><circle cx="664" cy="58" r="7" fill="var(--cyan)"/><text x="664" y="38" class="d-label cyan-fill" text-anchor="middle">Security &amp; regulated</text></g>
+        </svg>
+      </div>
+      <p class="footnote reveal">Security-focused infra — finance, healthcare, defense, gov — adopt <b>Standalone</b> for on-prem, air-gapped AI.</p>
+    </section>
+
+    <!-- 8 · MARKET SIZE -->
+    <section class="slide" id="s8" aria-label="Market Size">
+      <p class="kicker"><span class="num">07</span> Market</p>
+      <h2 class="headline">A $255B market, splitting toward local.</h2>
+      <div class="tamsom diagram">
+        <svg viewBox="0 0 300 300" role="img" aria-label="TAM SAM SOM concentric circles">
+          <circle cx="150" cy="150" r="140" fill="rgba(146,146,121,.06)" stroke="var(--outline-bright)" stroke-width="1.5"/>
+          <circle cx="150" cy="186" r="96" fill="rgba(143,232,241,.07)" stroke="var(--cyan)" stroke-width="1.5" stroke-opacity=".7"/>
+          <circle cx="150" cy="214" r="52" fill="rgba(215,228,4,.1)" stroke="var(--lime)" stroke-width="1.5"/>
+          <text x="150" y="40" class="d-label" text-anchor="middle">TAM</text>
+          <text x="150" y="120" class="d-label cyan-fill" text-anchor="middle">SAM</text>
+          <text x="150" y="210" class="d-label accent-fill" text-anchor="middle">SOM</text>
+        </svg>
+        <ul class="tamsom-legend">
+          <li class="reveal"><span class="tk tk-tam">TAM</span><b>$255B by 2030</b><em>Global AI inference market (~19% CAGR). MarketsandMarkets 2025</em></li>
+          <li class="reveal"><span class="tk tk-sam">SAM</span><b>Local, hybrid &amp; private AI</b><em>Teams running owned-hardware inference + on-prem AI. Edge compute alone ~$249B by 2030.</em></li>
+          <li class="reveal"><span class="tk tk-som">SOM</span><b>Our wedge — ~$50–100M ARR</b><em>Illustrative: AI-native teams with high cloud bills + security-driven orgs needing standalone.</em></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 · WHY NOW -->
+    <section class="slide" id="s9" aria-label="Why Now">
+      <p class="kicker"><span class="num">08</span> Why Now</p>
       <h2 class="headline">Inference is going hybrid.</h2>
-      <p class="lede">Three signals point the same way: AI is everywhere, local runtimes are exploding, and inference is a massive market.</p>
+      <p class="lede">Three signals point the same way: AI is everywhere, local runtimes are exploding, and the bill is now strategic.</p>
       <div class="signals diagram">
         <div class="signal reveal">
           <div class="sig-top"><span>Developers adopting AI</span>
-            <svg class="spark" viewBox="0 0 48 20" aria-hidden="true"><polyline points="2,17 16,13 30,8 45,3" fill="none" stroke="var(--lime)" stroke-width="2"/><circle cx="45" cy="3" r="2.6" fill="var(--lime)"/></svg></div>
+            <svg class="spark" viewBox="0 0 48 20" aria-hidden="true"><polyline points="2,17 16,13 30,9 45,3" fill="none" stroke="var(--lime)" stroke-width="2"/><circle cx="45" cy="3" r="2.6" fill="var(--lime)"/></svg></div>
           <b class="sig-num">84%</b>
           <p class="sig-sub">use or plan to use AI tools — up from 76% a year earlier.</p>
           <span class="sig-src">Stack Overflow 2025</span>
@@ -157,129 +228,72 @@
           <span class="sig-src">GitHub Octoverse 2025</span>
         </div>
         <div class="signal reveal">
-          <div class="sig-top"><span>Inference market</span>
+          <div class="sig-top"><span>The bill to cut</span>
             <svg class="spark" viewBox="0 0 48 20" aria-hidden="true"><polyline points="2,17 16,12 30,9 45,3" fill="none" stroke="var(--outline-bright)" stroke-width="2"/><circle cx="45" cy="3" r="2.6" fill="var(--outline-bright)"/></svg></div>
           <b class="sig-num">$106B→$255B</b>
-          <p class="sig-sub">market size by 2030, growing ~19% a year.</p>
+          <p class="sig-sub">inference spend by 2030 — cost control is now a board-level concern.</p>
           <span class="sig-src">MarketsandMarkets 2025</span>
         </div>
       </div>
-      <p class="footnote reveal">Adoption is mainstream and local AI is exploding — every team's workload is splitting between local and cloud. <span class="accent">That split needs a control plane.</span></p>
     </section>
 
-    <!-- 6 · TARGET MARKET -->
-    <section class="slide" id="s6" aria-label="Target Market">
-      <p class="kicker"><span class="num">05</span> Market</p>
-      <h2 class="headline">Start with developers. Expand to enterprise.</h2>
-      <p class="lede">A sharp wedge — teams already paying for cloud inference or experimenting with local models.</p>
-      <div class="wedge diagram">
-        <svg viewBox="0 0 720 220" role="img" aria-label="A market wedge widening from developers to enterprise">
-          <polygon class="wedge-shape" points="20,130 700,30 700,190" fill="url(#wedgeGrad)" fill-opacity=".14" stroke="var(--lime)" stroke-opacity=".5" stroke-width="1.5"/>
-          <defs><linearGradient id="wedgeGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="var(--lime)"/><stop offset="1" stop-color="var(--cyan)"/></linearGradient></defs>
-          <g class="wedge-stop reveal"><circle cx="120" cy="118" r="6" fill="var(--lime)"/><text x="120" y="150" class="d-label" text-anchor="middle">Indie devs &amp; AI startups</text></g>
-          <g class="wedge-stop reveal"><circle cx="320" cy="98" r="6" fill="var(--lime)"/><text x="320" y="78" class="d-label" text-anchor="middle">SaaS teams · high-volume AI</text></g>
-          <g class="wedge-stop reveal"><circle cx="520" cy="74" r="6" fill="var(--cyan)"/><text x="520" y="150" class="d-label" text-anchor="middle">Dev-tool companies</text></g>
-          <g class="wedge-stop reveal"><circle cx="664" cy="58" r="7" fill="var(--cyan)"/><text x="664" y="38" class="d-label cyan-fill" text-anchor="middle">Enterprise</text></g>
-        </svg>
-      </div>
-    </section>
-
-    <!-- 7 · UNIQUE -->
-    <section class="slide" id="s7" aria-label="What Makes It Unique">
-      <p class="kicker"><span class="num">06</span> Differentiation</p>
-      <h2 class="headline">Not a proxy. A reliability layer.</h2>
-      <div class="matrix diagram">
-        <div class="m-row m-head reveal"><span></span><span class="accent-fill">Fallbakit</span><span class="dim">Typical AI proxy</span></div>
-        <div class="m-row reveal"><span>Default route</span><span class="accent-fill">Local-first</span><span class="dim">Cloud-first</span></div>
-        <div class="m-row reveal"><span>Reliability</span><span class="accent-fill">Built-in fallback + health</span><span class="dim">Proxy only</span></div>
-        <div class="m-row reveal"><span>Economics</span><span class="accent-fill">BYOK — no token resale</span><span class="dim">Resells tokens</span></div>
-        <div class="m-row reveal"><span>Visibility</span><span class="accent-fill">Routes · cost · runner health</span><span class="dim">Limited</span></div>
-        <div class="m-row reveal"><span>App changes</span><span class="accent-fill">One base URL</span><span class="dim">Varies</span></div>
-      </div>
-    </section>
-
-    <!-- 8 · BUSINESS MODEL -->
-    <section class="slide" id="s8" aria-label="Business Model">
-      <p class="kicker"><span class="num">07</span> Business Model</p>
-      <h2 class="headline">A subscription control plane.</h2>
-      <p class="lede">BYOK means we charge for routing, reliability, and visibility — never for reselling tokens.</p>
-      <div class="ladder diagram">
-        <div class="step"><span class="step-k">Free</span><span class="step-v">Dev &amp; small experiments</span></div>
-        <div class="step"><span class="step-k">Basic</span><span class="step-v">One active local runner</span></div>
-        <div class="step"><span class="step-k">Enterprise</span><span class="step-v">Multiple runners · team controls</span></div>
-        <div class="step"><span class="step-k">Add-ons</span><span class="step-v">SSO · audit · private deploy</span></div>
-      </div>
-    </section>
-
-    <!-- 9 · FEASIBILITY -->
-    <section class="slide" id="s9" aria-label="Feasibility">
-      <p class="kicker"><span class="num">08</span> Feasibility</p>
-      <h2 class="headline">Builds on what developers already use.</h2>
-      <p class="lede">Low switching cost — no new mental model, no rewrite, no firewall surgery.</p>
-      <div class="blocks diagram">
-        <div class="block reveal"><b>OpenAI-compatible</b><span>Familiar API pattern</span></div>
-        <div class="block-plus reveal">+</div>
-        <div class="block reveal"><b>Ollama · oMLX · vLLM</b><span>Existing local runtimes</span></div>
-        <div class="block-plus reveal">+</div>
-        <div class="block reveal"><b>BYOK providers</b><span>Their own accounts</span></div>
-        <div class="block-plus reveal">+</div>
-        <div class="block reveal"><b>Outbound agent</b><span>No port-forwarding</span></div>
-      </div>
-    </section>
-
-    <!-- 10 · ROADMAP -->
-    <section class="slide" id="s10" aria-label="Roadmap">
-      <p class="kicker"><span class="num">09</span> Roadmap</p>
-      <h2 class="headline">Router → control plane → fleet.</h2>
+    <!-- 10 · EXTENDABILITY & ROADMAP -->
+    <section class="slide" id="s10" aria-label="Extendability and Roadmap">
+      <p class="kicker"><span class="num">09</span> Extendability</p>
+      <h2 class="headline">From router to AI cost control plane.</h2>
       <div class="timeline diagram">
-        <div class="phase reveal"><span class="phase-tag accent-fill">Now</span><h3>Reliable router</h3><ul><li>Local-first routing</li><li>Automatic fallback</li><li>Usage &amp; cost visibility</li></ul></div>
-        <div class="phase reveal"><span class="phase-tag">Next</span><h3>Team control plane</h3><ul><li>Smarter model routing</li><li>Roles · audit · SSO</li><li>Alerts &amp; spend limits</li></ul></div>
-        <div class="phase reveal"><span class="phase-tag cyan-fill">Later</span><h3>Hybrid fleet</h3><ul><li>Multi-region routing</li><li>Runner fleet management</li><li>Customer-hosted plane</li></ul></div>
+        <div class="phase reveal"><span class="phase-tag accent-fill">Now</span><h3>Reliable router</h3><ul><li>Local-first routing</li><li>Automatic cloud fallback</li><li>Usage &amp; cost visibility</li></ul></div>
+        <div class="phase reveal"><span class="phase-tag">Next</span><h3>Cost control plane</h3><ul><li>Cost / quality-aware routing</li><li>Embeddings &amp; more endpoints</li><li>Roles · audit · SSO · alerts</li></ul></div>
+        <div class="phase reveal"><span class="phase-tag cyan-fill">Later</span><h3>Hybrid fleet</h3><ul><li>Multi-region runner routing</li><li>Fleet management + policy marketplace</li><li>Cost-optimization engine</li></ul></div>
       </div>
+      <p class="footnote reveal">Same OpenAI-compatible surface — extend without touching application code.</p>
     </section>
 
-    <!-- 11 · VISION -->
-    <section class="slide" id="s11" aria-label="Vision">
-      <p class="kicker"><span class="num">10</span> Vision</p>
-      <h2 class="headline">Every request runs in its best place.</h2>
-      <div class="vision diagram">
-        <svg viewBox="0 0 720 280" role="img" aria-label="Fallbakit routing to local, edge, private cloud, and public provider">
-          <defs><filter id="glowV" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-          <g class="box box-key" filter="url(#glowV)"><rect x="300" y="116" width="120" height="56" rx="8"/><text x="360" y="149" class="b-title accent-fill">Fallbakit</text></g>
-          <path id="vL1" d="M300 138 C220 120 150 96 90 70" fill="none" stroke="var(--lime)" stroke-width="2.5" class="route-draw"/>
-          <path id="vL2" d="M300 150 C220 160 150 188 90 210" fill="none" stroke="var(--lime)" stroke-width="2.5" class="route-draw"/>
-          <path id="vL3" d="M420 138 C500 120 570 96 630 70" fill="none" stroke="var(--cyan)" stroke-width="2.5" class="route-draw"/>
-          <path id="vL4" d="M420 150 C500 160 570 188 630 210" fill="none" stroke="var(--cyan)" stroke-width="2.5" class="route-draw"/>
-          <g class="dest"><circle cx="78" cy="64" r="9" fill="var(--lime)"/><text x="78" y="46" class="d-label" text-anchor="middle">Local</text></g>
-          <g class="dest"><circle cx="78" cy="216" r="9" fill="var(--lime)"/><text x="78" y="244" class="d-label" text-anchor="middle">Edge</text></g>
-          <g class="dest"><circle cx="642" cy="64" r="9" fill="var(--cyan)"/><text x="642" y="46" class="d-label" text-anchor="middle">Private cloud</text></g>
-          <g class="dest"><circle cx="642" cy="216" r="9" fill="var(--cyan)"/><text x="642" y="244" class="d-label" text-anchor="middle">Public provider</text></g>
-        </svg>
+    <!-- 11 · BUSINESS MODEL -->
+    <section class="slide" id="s11" aria-label="Business Model">
+      <p class="kicker"><span class="num">10</span> Business Model</p>
+      <h2 class="headline">Three revenue lines.</h2>
+      <div class="editions three diagram">
+        <div class="edition reveal">
+          <span class="ed-tag">Cloud subscription</span>
+          <h3>SaaS tiers</h3>
+          <p class="ed-sub">Recurring, expands with usage.</p>
+          <ul><li>Free → Basic (1 runner)</li><li>Enterprise — multi-runner, team controls</li></ul>
+        </div>
+        <div class="edition reveal ed-key">
+          <span class="ed-tag cyan-fill">Standalone license</span>
+          <h3>Self-hosted</h3>
+          <p class="ed-sub">High-ACV, security-driven.</p>
+          <ul><li>Per-node / annual license</li><li>SSO · audit · private deploy add-ons</li></ul>
+        </div>
+        <div class="edition reveal">
+          <span class="ed-tag">Usage platform fee</span>
+          <h3>At scale</h3>
+          <p class="ed-sub">Margin on volume.</p>
+          <ul><li>Platform fee on high request volume</li><li>BYOK — customers pay providers direct</li></ul>
+        </div>
       </div>
-      <p class="footnote reveal">Lower cost · more control · better reliability · full operational visibility.</p>
     </section>
 
     <!-- 12 · ASK -->
     <section class="slide slide-ask" id="s12" aria-label="The Ask">
       <img class="ask-mark" src="assets/logo.svg" alt="Fallbakit logo" width="72" height="72" />
       <p class="kicker"><span class="num">11</span> The Ask</p>
-      <h2 class="headline">Help make local-first AI the default.</h2>
+      <h2 class="headline">Make owned-hardware AI the default.</h2>
       <div class="asks diagram">
         <div class="ask-item reveal"><span class="ask-n">01</span> Grow developer adoption</div>
-        <div class="ask-item reveal"><span class="ask-n">02</span> Harden enterprise controls</div>
+        <div class="ask-item reveal"><span class="ask-n">02</span> Land standalone in security-focused orgs</div>
         <div class="ask-item reveal"><span class="ask-n">03</span> Expand the runner ecosystem</div>
-        <div class="ask-item reveal"><span class="ask-n">04</span> Scale hybrid inference routing</div>
+        <div class="ask-item reveal"><span class="ask-n">04</span> Build the AI cost-control plane</div>
       </div>
-      <p class="ask-foot reveal">Run AI locally first — never lose reliability. <a href="https://fallbakit.com">fallbakit.com</a></p>
+      <p class="ask-foot reveal">Run AI on hardware you own — without losing reliability or control. <a href="https://fallbakit.com">fallbakit.com</a></p>
     </section>
 
   </main>
 
-  <!-- Click zones for prev/next -->
   <button class="edge edge-prev" id="prevBtn" aria-label="Previous slide"></button>
   <button class="edge edge-next" id="nextBtn" aria-label="Next slide"></button>
 
-  <!-- Dots + counter -->
   <nav class="deck-dots" id="dots" aria-label="Slide navigation"></nav>
   <div class="deck-counter"><span id="curNum">01</span> <span class="dim">/ 12</span></div>
 
