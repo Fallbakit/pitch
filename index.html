@@ -71,7 +71,6 @@
           </svg>
         </div>
       </div>
-      <p class="cover-hint">Use <kbd>→</kbd> <kbd>←</kbd> or click to navigate</p>
     </section>
 
     <!-- 2 · PROBLEM -->
@@ -172,18 +171,29 @@
     <section class="slide" id="s7" aria-label="Target Audience">
       <p class="kicker"><span class="num">06</span> Who It's For</p>
       <h2 class="headline">Teams that own their stack.</h2>
-      <p class="lede">Start with cost-conscious developers; expand into security-driven enterprises running standalone.</p>
-      <div class="wedge diagram">
-        <svg viewBox="0 0 720 220" role="img" aria-label="A market wedge widening from developers to enterprise">
-          <polygon class="wedge-shape" points="20,130 700,30 700,190" fill="url(#wedgeGrad)" fill-opacity=".14" stroke="var(--lime)" stroke-opacity=".5" stroke-width="1.5"/>
-          <defs><linearGradient id="wedgeGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="var(--lime)"/><stop offset="1" stop-color="var(--cyan)"/></linearGradient></defs>
-          <g class="wedge-stop reveal"><circle cx="118" cy="118" r="6" fill="var(--lime)"/><text x="118" y="150" class="d-label" text-anchor="middle">AI startups cutting bills</text></g>
-          <g class="wedge-stop reveal"><circle cx="320" cy="98" r="6" fill="var(--lime)"/><text x="320" y="78" class="d-label" text-anchor="middle">SaaS — AI is a margin line</text></g>
-          <g class="wedge-stop reveal"><circle cx="510" cy="76" r="6" fill="var(--cyan)"/><text x="510" y="150" class="d-label" text-anchor="middle">Dev-tools &amp; agencies</text></g>
-          <g class="wedge-stop reveal"><circle cx="664" cy="58" r="7" fill="var(--cyan)"/><text x="664" y="38" class="d-label cyan-fill" text-anchor="middle">Security &amp; regulated</text></g>
-        </svg>
+      <p class="lede">Cost-conscious builders first — expanding to security-driven enterprises on Standalone.</p>
+      <div class="audience diagram">
+        <div class="aud-card reveal">
+          <div class="aud-ico">⚡</div>
+          <div class="aud-body"><h3>AI startups</h3><p>Cut model bills from day one.</p></div>
+          <span class="aud-tag tag-cloud">Cloud</span>
+        </div>
+        <div class="aud-card reveal">
+          <div class="aud-ico">↗</div>
+          <div class="aud-body"><h3>SaaS teams</h3><p>Protect margins on high-volume AI features.</p></div>
+          <span class="aud-tag tag-cloud">Cloud</span>
+        </div>
+        <div class="aud-card reveal">
+          <div class="aud-ico">⚙</div>
+          <div class="aud-body"><h3>Dev-tools &amp; agencies</h3><p>Ship AI features without per-token cost.</p></div>
+          <span class="aud-tag tag-cloud">Cloud</span>
+        </div>
+        <div class="aud-card reveal aud-key">
+          <div class="aud-ico">⛨</div>
+          <div class="aud-body"><h3>Security &amp; regulated</h3><p>On-prem, air-gapped AI — finance, health, gov, defense.</p></div>
+          <span class="aud-tag tag-standalone">Standalone</span>
+        </div>
       </div>
-      <p class="footnote reveal">Security-focused infra — finance, healthcare, defense, gov — adopt <b>Standalone</b> for on-prem, air-gapped AI.</p>
     </section>
 
     <!-- 8 · MARKET SIZE -->
@@ -289,13 +299,71 @@
       <p class="ask-foot reveal">Run AI on hardware you own — without losing reliability or control. <a href="https://fallbakit.com">fallbakit.com</a></p>
     </section>
 
+    <!-- 13 · CONTACT / CLOSING -->
+    <section class="slide slide-contact" id="s13" aria-label="Contact">
+      <svg class="contact-fx" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <radialGradient id="cGlow" cx="50%" cy="42%" r="50%"><stop offset="0" stop-color="rgba(215,228,4,.10)"/><stop offset="60%" stop-color="rgba(143,232,241,.04)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+        </defs>
+        <rect width="1280" height="720" fill="url(#cGlow)"/>
+        <path id="cf1" class="cf-route" d="M40 80 C360 200 480 300 640 300" fill="none" stroke="var(--lime)" stroke-width="2" stroke-opacity=".5"/>
+        <path id="cf2" class="cf-route" d="M1240 90 C920 210 800 300 640 300" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-opacity=".5"/>
+        <path id="cf3" class="cf-route" d="M80 660 C380 460 500 320 640 300" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-opacity=".4"/>
+        <path id="cf4" class="cf-route" d="M1200 650 C900 470 780 320 640 300" fill="none" stroke="var(--lime)" stroke-width="2" stroke-opacity=".4"/>
+        <circle r="3.5" fill="#fff"><animateMotion dur="3s" repeatCount="indefinite"><mpath href="#cf1"/></animateMotion></circle>
+        <circle r="3.5" fill="var(--cyan)"><animateMotion dur="3s" begin=".7s" repeatCount="indefinite"><mpath href="#cf2"/></animateMotion></circle>
+        <circle r="3.5" fill="var(--cyan)"><animateMotion dur="3s" begin="1.4s" repeatCount="indefinite"><mpath href="#cf3"/></animateMotion></circle>
+        <circle r="3.5" fill="var(--lime)"><animateMotion dur="3s" begin="2.1s" repeatCount="indefinite"><mpath href="#cf4"/></animateMotion></circle>
+      </svg>
+
+      <div class="emblem">
+        <span class="ring"></span><span class="ring"></span><span class="ring"></span>
+        <img class="emblem-logo" src="assets/logo.svg" alt="Fallbakit" width="76" height="76" />
+      </div>
+      <h2 class="headline contact-title">Thank you.</h2>
+      <p class="contact-sub">Run AI on hardware you own — without losing reliability or control.</p>
+
+      <div class="contact-card reveal">
+        <div class="avatar">
+          <img src="assets/founder.jpg" alt="Noor Ajmir Tanvir" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <span class="avatar-mono" style="display:none">NT</span>
+        </div>
+        <div class="founder-meta">
+          <span class="founder-role">Founder</span>
+          <h3 class="founder-name">Noor Ajmir Tanvir</h3>
+          <a class="founder-mail" href="mailto:tanvirmahin24@gmail.com">tanvirmahin24@gmail.com</a>
+        </div>
+      </div>
+
+      <p class="contact-foot reveal"><img class="contact-logo" src="assets/logo.svg" alt="" width="20" height="20" /> Fallba<span class="accent">kit</span> <span class="dim">·</span> <a href="https://fallbakit.com">fallbakit.com</a></p>
+    </section>
+
   </main>
 
   <button class="edge edge-prev" id="prevBtn" aria-label="Previous slide"></button>
   <button class="edge edge-next" id="nextBtn" aria-label="Next slide"></button>
 
   <nav class="deck-dots" id="dots" aria-label="Slide navigation"></nav>
-  <div class="deck-counter"><span id="curNum">01</span> <span class="dim">/ 12</span></div>
+  <div class="deck-counter"><span id="curNum">01</span> <span class="dim">/ 13</span></div>
+
+  <!-- Intro / how-to modal -->
+  <div class="modal-overlay" id="introModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-label="How to navigate this deck">
+      <img class="modal-logo" src="assets/logo.svg" alt="" width="44" height="44" />
+      <h2 class="modal-title">The Fallba<span class="accent">kit</span> pitch</h2>
+      <p class="modal-sub">A 13-slide interactive deck. Here's how to move through it:</p>
+      <ul class="modal-keys">
+        <li><span class="mk"><kbd>→</kbd><kbd>←</kbd></span> Next / previous slide</li>
+        <li><span class="mk">Click</span> Left or right edge of the screen</li>
+        <li><span class="mk">Swipe</span> On touch devices</li>
+        <li><span class="mk">Dots</span> Jump to any slide</li>
+        <li><span class="mk"><kbd>⌘/Ctrl</kbd><kbd>P</kbd></span> Export the whole deck as a PDF</li>
+      </ul>
+      <button class="modal-start" id="modalStart" type="button">Start presenting →</button>
+      <p class="modal-hint">or press any key</p>
+    </div>
+  </div>
+  <button class="help-btn" id="helpBtn" type="button" aria-label="How to navigate">?</button>
 
   <script src="deck.js"></script>
 </body>
