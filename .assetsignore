@@ -1,7 +1,0 @@
-wrangler.jsonc
-.assetsignore
-.gitignore
-README.md
-**/.git
-**/.git/**
-**/.DS_Store
