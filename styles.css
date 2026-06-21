@@ -255,7 +255,7 @@ kbd { font-family: var(--mono); font-size: 11px; border: 1px solid var(--outline
 .edge { position: fixed; top: 0; bottom: 0; width: 16vw; max-width: 220px; z-index: 20; border: 0; background: transparent; cursor: pointer; }
 .edge-prev { left: 0; cursor: w-resize; }
 .edge-next { right: 0; cursor: e-resize; }
-.edge:focus-visible { outline: 2px solid var(--lime); outline-offset: -4px; }
+.edge:focus, .edge:focus-visible, .edge:active { outline: none; box-shadow: none; border: 0; }
 
 .deck-dots { position: fixed; left: 50%; transform: translateX(-50%); bottom: 22px; z-index: 30; display: flex; gap: 10px; }
 .deck-dots button { width: 9px; height: 9px; border-radius: 50%; border: 1px solid var(--outline-bright); background: transparent; padding: 0; cursor: pointer; transition: all .25s var(--ease); }
@@ -266,16 +266,16 @@ kbd { font-family: var(--mono); font-size: 11px; border: 1px solid var(--outline
 .deck-counter #curNum { color: var(--light); }
 
 /* ---------- 13 · Contact / closing ---------- */
-.slide-contact { gap: 13px; }
+.slide-contact { gap: 11px; }
 .contact-fx { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 .cf-route { stroke-dasharray: 1400; stroke-dashoffset: 1400; }
 .slide-contact.is-active .cf-route { animation: draw 1.6s var(--ease) forwards .2s; }
 
-.emblem { position: relative; width: 120px; height: 120px; display: grid; place-items: center; }
+.emblem { position: relative; width: 100px; height: 100px; display: grid; place-items: center; }
 .emblem-logo { position: relative; z-index: 2; filter: drop-shadow(0 0 28px rgba(215,228,4,.45)); }
 .slide-contact.is-active .emblem-logo { animation: emblemPop .7s var(--ease) both; }
 @keyframes emblemPop { from { opacity: 0; transform: scale(.6); } }
-.ring { position: absolute; inset: 0; margin: auto; width: 84px; height: 84px; border-radius: 50%; border: 1.5px solid rgba(215,228,4,.5); opacity: 0; }
+.ring { position: absolute; inset: 0; margin: auto; width: 72px; height: 72px; border-radius: 50%; border: 1.5px solid rgba(215,228,4,.5); opacity: 0; }
 .slide-contact.is-active .ring { animation: ripple 3s ease-out infinite; }
 .ring:nth-child(2) { animation-delay: 1s; border-color: rgba(143,232,241,.5); }
 .ring:nth-child(3) { animation-delay: 2s; }
@@ -292,10 +292,17 @@ kbd { font-family: var(--mono); font-size: 11px; border: 1px solid var(--outline
 .founder-meta { text-align: left; display: flex; flex-direction: column; gap: 2px; }
 .founder-role { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--lime); }
 .founder-name { font-size: 19px; color: var(--light); }
-.founder-mail { font-size: 14px; color: var(--muted); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.12); width: fit-content; }
-.founder-mail:hover { color: var(--lime); border-color: rgba(215,228,4,.4); }
-.contact-foot { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); font-weight: 600; margin-top: 2px; }
-.contact-foot a { color: var(--lime); text-decoration: none; }
+.founder-mail { display: inline-flex; align-items: center; gap: 6px; margin-top: 5px; font-size: 13.5px; color: var(--lime); text-decoration: none; border: 1px solid rgba(215,228,4,.4); border-radius: 99px; padding: 5px 13px; width: fit-content; transition: all .2s var(--ease); }
+.founder-mail:hover { background: rgba(215,228,4,.12); }
+
+.share { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 6px; }
+.share-label { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
+.share-row { display: flex; gap: 10px; align-items: center; }
+.share-ic { width: 40px; height: 40px; display: inline-grid; place-items: center; border-radius: 50%; border: 1px solid var(--outline); background: var(--glass); color: var(--muted); cursor: pointer; text-decoration: none; transition: all .2s var(--ease); backdrop-filter: blur(6px); padding: 0; }
+.share-ic:hover { border-color: var(--lime); color: var(--lime); transform: translateY(-2px); }
+.share-ic[hidden] { display: none; }
+.share-toast { font-size: 12px; color: var(--lime); font-family: var(--mono); opacity: 0; transition: opacity .2s; height: 14px; }
+.share-toast.show { opacity: 1; }
 
 /* ---------- Intro / how-to modal ---------- */
 .modal-overlay { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 24px; background: rgba(6,7,4,.72); backdrop-filter: blur(8px); animation: fadeIn .3s var(--ease) both; }

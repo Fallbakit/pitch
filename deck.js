@@ -83,6 +83,33 @@
   };
   addEventListener('hashchange', () => go(fromHash()));
 
+  // share (last slide)
+  const ogUrl = document.querySelector('meta[property="og:url"]');
+  const canonical = (ogUrl && ogUrl.content) || (location.origin + location.pathname);
+  const shareText = 'Fallbakit — cut the cost of AI inference. Run models on hardware you already own.';
+  const enc = encodeURIComponent;
+  const setHref = (id, href) => { const el = document.getElementById(id); if (el) el.href = href; };
+  setHref('shX', `https://twitter.com/intent/tweet?text=${enc(shareText)}&url=${enc(canonical)}`);
+  setHref('shIn', `https://www.linkedin.com/sharing/share-offsite/?url=${enc(canonical)}`);
+  setHref('shWa', `https://wa.me/?text=${enc(shareText + ' ' + canonical)}`);
+  const nativeBtn = document.getElementById('shareNative');
+  if (nativeBtn && navigator.share) {
+    nativeBtn.hidden = false;
+    nativeBtn.addEventListener('click', () => navigator.share({ title: document.title, text: shareText, url: canonical }).catch(() => {}));
+  }
+  const copyBtn = document.getElementById('shCopy');
+  const toast = document.getElementById('shareToast');
+  if (copyBtn) copyBtn.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(canonical); }
+    catch (e) {
+      const t = document.createElement('textarea'); t.value = canonical;
+      document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); } catch (e2) {}
+      t.remove();
+    }
+    if (toast) { toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1600); }
+  });
+
   if (reduce) document.querySelectorAll('svg').forEach((s) => s.pauseAnimations && s.pauseAnimations());
 
   go(fromHash());
