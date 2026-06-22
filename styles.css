@@ -267,7 +267,7 @@ kbd { font-family: var(--mono); font-size: 11px; border: 1px solid var(--outline
 
 /* ---------- 13 · Contact / closing ---------- */
 .slide-contact { gap: 11px; }
-.contact-fx { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+.slide-contact .contact-fx { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; z-index: -1; pointer-events: none; }
 .cf-route { stroke-dasharray: 1400; stroke-dashoffset: 1400; }
 .slide-contact.is-active .cf-route { animation: draw 1.6s var(--ease) forwards .2s; }
 
