@@ -2,7 +2,7 @@
 
 Interactive 12-slide investor deck for [Fallbakit](https://fallbakit.com) — local-first AI routing with cloud fallback. Plain HTML/CSS/JS, no build step, themed to match the web app.
 
-**Live:** https://pitch.fallbakit.tanvirmahin.com
+**Live:** https://pitch.fallbakit.com
 
 ## Run locally
 
@@ -32,4 +32,4 @@ Content source: `platform/Pitch-Deck-Concept.md` and `platform/About-Fallbakit.m
 
 ## Deploy
 
-Cloudflare Pages, connected to this repo's `main` branch — **build command: none, output dir: `/`**. Every push auto-deploys. Custom domain `pitch.fallbakit.tanvirmahin.com` gets a free auto-provisioned certificate.
+Cloudflare Pages, connected to this repo's `main` branch — **build command: none, output dir: `/`**. Every push auto-deploys. Custom domain `pitch.fallbakit.com` gets a free auto-provisioned certificate.
