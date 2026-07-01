@@ -1,0 +1,14 @@
+{
+  // Static-assets-only Worker for the Fallbakit pitch deck (no server code).
+  // The site is plain HTML/CSS/JS at the repo root, so assets.directory = ".".
+  //
+  // IMPORTANT: `name` must match the existing Cloudflare Workers project that
+  // pitch.fallbakit.com is bound to — otherwise the deploy lands on a different
+  // Worker and the custom domain won't serve it. Adjust if the project is named
+  // differently in the Cloudflare dashboard.
+  "name": "fallbakit-pitch",
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "."
+  }
+}
