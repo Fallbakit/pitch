@@ -6,7 +6,7 @@
   // pitch.fallbakit.com is bound to — otherwise the deploy lands on a different
   // Worker and the custom domain won't serve it. Adjust if the project is named
   // differently in the Cloudflare dashboard.
-  "name": "fallbakit-pitch",
+  "name": "pitch",
   "compatibility_date": "2026-07-01",
   "assets": {
     "directory": "."
